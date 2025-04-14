@@ -1,20 +1,22 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
-import { Country } from '../models/country.models';
+import { defineProps } from "vue";
+import { Country } from "../models/country.model";
+import CountryItem from "./CountryItem.vue";
 
 interface Props {
-    conutries: Country[];
+  countries: Country[];
 }
 
 defineProps<Props>();
-
 </script>
 
 <template>
-    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 gap-3">
-        <div class="border border-gray-300 p-3" v-for="country in conutries" :key="country.name.common">
-            {{ country.name.common }}
-        </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+    <div
+      v-for="country in countries"
+      class="border border-gray-300 rounded p-3"
+    >
+      <CountryItem :country="country" />
     </div>
+  </div>
 </template>
-
